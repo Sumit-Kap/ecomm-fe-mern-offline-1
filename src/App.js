@@ -9,3 +9,16 @@ function App() {
 }
 
 export default App;
+
+/*
+Login/ Register
+
+Product listing + Search
+
+Product details
+
+pay -> open a razorpay/stripe modal -> backend
+
+
+
+*/
