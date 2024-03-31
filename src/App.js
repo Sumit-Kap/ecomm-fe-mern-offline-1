@@ -1,24 +1,23 @@
 import './App.css';
 
+import { Route, Routes } from 'react-router';
+
+import Header from './components/common/header';
+import { appConstants } from './constants/appConstants';
+
 function App() {
   return (
-    <div className="text-9xl font-extrabold underline">
-      Ecomm frontend
+    <div className='w-[100vw] h-[100vh]'>
+      <Header/>
+      <Routes>
+        {appConstants.routes.map((route) => (
+          <Route element={route.component} path={route.path} />
+        ))}
+      </Routes>
     </div>
   );
 }
 
 export default App;
-
-/*
-Login/ Register
-
-Product listing + Search
-
-Product details
-
-pay -> open a razorpay/stripe modal -> backend
-
-
-
-*/
+// appConstant  - A -> Header
+// App.js - B -> A
