@@ -1,5 +1,6 @@
 import React from "react";
-export const BASE_URL = 'http://localhost:4000';
+export const BASE_URL = process.env.BASE_URL || 'http://localhost:4000';
+console.log('printing', BASE_URL);
 const useApi = (url, method, requestBody = {}) => {
     const [response, setResponse] = React.useState();
     const [loading, setLoading] = React.useState(true);
