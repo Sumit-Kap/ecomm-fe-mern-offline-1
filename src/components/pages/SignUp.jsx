@@ -5,15 +5,15 @@ import { useNavigate } from "react-router";
 const SignUp = () => {
   const [email, setEmail] = React.useState();
   const [password, setPassword] = React.useState();
-    const [confirmPassword, setConfirmPassword] = React.useState();
-    const navigate = useNavigate();
+  const [confirmPassword, setConfirmPassword] = React.useState();
+  const navigate = useNavigate();
   const register = async () => {
     try {
-        const requestPayload = {
-            "email": email,
-            "password": password,
-            "confirmPassword": confirmPassword
-      }
+      const requestPayload = {
+        email: email,
+        password: password,
+        confirmPassword: confirmPassword,
+      };
       const data = await fetch(`${BASE_URL}/api/v1/user/signUp`, {
         method: "POST",
         headers: {
@@ -21,8 +21,8 @@ const SignUp = () => {
         },
         body: JSON.stringify(requestPayload),
       });
-        await data.json();
-        navigate('/sign-in')
+      await data.json();
+      navigate("/sign-in");
     } catch (err) {
       console.log(err);
     }
@@ -64,6 +64,12 @@ const SignUp = () => {
         <a href="#" className="w-80 h-10 mt-5 text-center underline">
           Sign in
         </a>
+        <div
+          class="g-signin2"
+          data-width="300"
+          data-height="200"
+          data-longtitle="true"
+        />
       </div>
     </div>
   );

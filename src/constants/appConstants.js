@@ -1,12 +1,12 @@
+import Home from "../components/pages/Home"
 import SignUp from "../components/pages/SignUp";
 import Signin from "../components/pages/Signin";
 import Something from "../components/Something";
-
 export const appConstants = {
     routes: [{
         name: 'Home',
         path: '/',
-        component: <Something/>
+        component: <Home/>
     }, {
         name: 'Sign-in',
         path: '/sign-in',

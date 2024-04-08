@@ -1,17 +1,20 @@
+import { Navigate, useNavigate } from "react-router";
+
 import { BASE_URL } from "../hooks/useApi";
 import React from "react";
+
 const Signin = () => {
   const [email, setEmail] = React.useState();
   const [password, setPassword] = React.useState();
-
+    const navigate = useNavigate();
   const login = async () => {
     try {
-        const requestPayload = {
-            "email": email,
-            "password": password
-        };
-        const data = await fetch(`${BASE_URL}/api/v1/user/signIn`, {
-          method: 'POST',
+      const requestPayload = {
+        email: email,
+        password: password,
+      };
+      const data = await fetch(`${BASE_URL}/api/v1/user/signIn`, {
+        method: "POST",
         headers: {
           "content-type": "application/json",
         },
@@ -23,11 +26,16 @@ const Signin = () => {
       console.log(err);
     }
   };
+ 
+    const googleLogin = async () => {
+        const response = await fetch(`${BASE_URL}/api/v1/user/google/init`);
+        const data = await response.json();
+        window.location.href = data.url
+    }
+    
   return (
     <div className="flex w-full h-full justify-center items-center ">
-      <div
-        className=" flex flex-col justify-center items-center w-[400px] h-[400px] border-2 border-solid border-fuchsia-800 shadow-md"
-      >
+      <div className=" flex flex-col justify-center items-center w-[400px] h-[400px] border-2 border-solid border-fuchsia-800 shadow-md">
         <input
           type="text"
           className="w-80 rounded-lg h-10 border-2 mt-5 placeholder:font-extralight text-2xl"
@@ -50,6 +58,9 @@ const Signin = () => {
         <a href="#" className="w-80 h-10 mt-5 text-center underline">
           Forgot Password?
         </a>
+        <button className="w-80 h-10 border-2 mt-5 bg-gray-600" onClick={googleLogin}>
+          Login through google
+        </button>
       </div>
     </div>
   );
